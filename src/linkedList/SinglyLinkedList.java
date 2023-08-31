@@ -39,10 +39,30 @@ public class SinglyLinkedList {
 
     public void printList() {
         Node temp = head;
-
         while (temp != null) {
-            System.out.print(temp.data + " -> ");
+            System.out.print(temp.data);
+            if (temp.next != null)
+                System.out.print(" -> ");
             temp = temp.next;
+        }
+        System.out.println();
+     }
+
+     public void delete(int dataToDelete) {
+        if (head == null)
+            return;
+
+        if (head.data == dataToDelete) {
+            head = head.next;
+            return;
+        }
+
+        Node currentNode = head;
+        while (currentNode.next != null) {
+            if (currentNode.next.data == dataToDelete) {
+                currentNode.next = currentNode.next.next;
+            }
+            currentNode = currentNode.next;
         }
      }
 
@@ -53,8 +73,13 @@ public class SinglyLinkedList {
         list.insert(11);
         list.insert(2);
         list.insert(32);
+        list.insert(2);
+        list.insert(90);
+        list.insert(2);
         list.insert(90);
 
+        list.printList();
+        list.delete(2);
         list.printList();
     }
 }
