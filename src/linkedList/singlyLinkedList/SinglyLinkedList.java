@@ -1,5 +1,7 @@
 package linkedList.singlyLinkedList;
 
+import linkedList.Node;
+
 public class SinglyLinkedList {
     Node head;
 
@@ -12,15 +14,18 @@ public class SinglyLinkedList {
         }
 
         Node temp = head;
-
         while (temp.next != null) {
             temp = temp.next;
         }
-
         temp.next = newNode;
     }
 
     public void printList() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
         Node temp = head;
         while (temp != null) {
             System.out.print(temp.data);
