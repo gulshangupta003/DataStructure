@@ -1,21 +1,6 @@
-package linkedList;
+package linkedList.singlyLinkedList;
 
-import java.util.LinkedList;
-
-class Node {
-    int data;
-    Node next;
-
-    public Node() {
-        this.data = 0;
-        this.next = null;
-    }
-
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+import linkedList.Node;
 
 public class SinglyLinkedList {
     Node head;
@@ -29,15 +14,18 @@ public class SinglyLinkedList {
         }
 
         Node temp = head;
-
         while (temp.next != null) {
             temp = temp.next;
         }
-
         temp.next = newNode;
     }
 
     public void printList() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
         Node temp = head;
         while (temp != null) {
             System.out.print(temp.data);
@@ -46,9 +34,9 @@ public class SinglyLinkedList {
             temp = temp.next;
         }
         System.out.println();
-     }
+    }
 
-     public void delete(int dataToDelete) {
+    public void delete(int dataToDelete) {
         if (head == null)
             return;
 
@@ -64,22 +52,5 @@ public class SinglyLinkedList {
             }
             currentNode = currentNode.next;
         }
-     }
-
-    public static void main(String[] args) {
-        SinglyLinkedList list = new SinglyLinkedList();
-
-        list.insert(10);
-        list.insert(11);
-        list.insert(2);
-        list.insert(32);
-        list.insert(2);
-        list.insert(90);
-        list.insert(2);
-        list.insert(90);
-
-        list.printList();
-        list.delete(2);
-        list.printList();
     }
 }
